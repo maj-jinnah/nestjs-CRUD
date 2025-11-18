@@ -100,7 +100,11 @@ export class PostsService {
     if (postIndex === -1) {
       throw new NotFoundException('Post not found');
     }
-    const updatedPost = { ...this.posts[postIndex], ...postData };
+    const updatedPost = {
+      ...this.posts[postIndex],
+      ...postData,
+      updatedAt: new Date(),
+    };
     this.posts[postIndex] = updatedPost;
     return updatedPost;
   }
